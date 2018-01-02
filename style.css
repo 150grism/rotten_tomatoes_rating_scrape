@@ -1,0 +1,96 @@
+.mb-movies {
+  display: flex;
+  width: 740px;
+  flex-wrap: wrap;
+  font-family: 'Source Sans Pro', sans-serif;
+  margin: 20px auto;
+}
+
+.mb-movie {
+  margin: 0 20px;
+  max-width: 172px;
+}
+
+.mb-movie > .poster_container > a {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.mb-movie a {
+  text-align: center;
+  text-decoration: none;
+  color: black;
+}
+
+.mb-movie .release-date {
+  color: #787878;
+}
+
+.mb-movie * {
+  font-weight: normal;
+  font-size: 13px;
+  margin: 5px 0;
+}
+
+.icon {
+  height: 16px;
+  margin-bottom: 3px;
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+  /* deprecated. use 'upright' */
+}
+
+.icon.certified, .icon.certified_fresh {
+  background: transparent url("https://www.rottentomatoes.com/static/images/icons/CF_16x16.png") no-repeat;
+  background-size: cover;
+}
+
+.icon.fresh {
+  background: transparent url("https://www.rottentomatoes.com/static/images/icons/fresh-16.png") no-repeat;
+  background-size: cover;
+}
+
+.icon.friend_rating {
+  background-position: -240px -144px;
+}
+
+.icon.friend_wts {
+  background-position: -224px -144px;
+}
+
+.icon.popcorn {
+  background: transparent url("https://www.rottentomatoes.com/static/images/icons/popcorn-16.png") no-repeat;
+  background-size: cover;
+}
+
+.icon.upright {
+  background: transparent url("https://www.rottentomatoes.com/static/images/icons/popcorn-16.png") no-repeat;
+  background-size: cover;
+}
+
+.icon.rotten {
+  background: transparent url("https://www.rottentomatoes.com/static/images/icons/splat-16.png") no-repeat;
+  background-size: cover;
+}
+
+.icon.spilled {
+  background: transparent url("https://www.rottentomatoes.com/static/images/icons/badpopcorn-16.png") no-repeat;
+  background-size: cover;
+}
+
+.icon.wait {
+  background: url("https://www.rottentomatoes.com/static/images/icons/loading.gif") no-repeat;
+  background-size: cover;
+}
+
+.icon.wts {
+  background: transparent url("https://www.rottentomatoes.com/static/images/icons/wts-16.png") no-repeat;
+  background-size: cover;
+}
+
+.icon.noRating {
+  width: 100%;
+}
+/*# sourceMappingURL=style.css.map */

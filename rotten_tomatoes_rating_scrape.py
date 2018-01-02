@@ -1,6 +1,7 @@
 """rotten tomatoes rating scrape"""
-from bs4 import BeautifulSoup
 from selenium import webdriver
+from bs4 import BeautifulSoup
+import time
 
 driver = webdriver.Chrome(r'C:\SeleniumDrivers\chromedriver.exe')
 
@@ -8,17 +9,46 @@ my_url = "https://www.rottentomatoes.com/browse/dvd-streaming-all/"
 
 driver.get(my_url)
 more_button = driver.find_element_by_class_name('mb-load-btn')
-more_button.click()
 
-# uClient = uReq(my_url)
-# page_html = uClient.read()
-# uClient.close()
 page_html = driver.page_source
 soup = BeautifulSoup(page_html, "html.parser")
-ratings = soup.find_all("span", class_="tMeterScore")
-# print(len(last_rating)) 
+movies = soup.find("div", class_="mb-movies")
+movies = movies.find_all("div", class_="mb-movie")
 
-for i in range(0, len(ratings) - 1, 2):
-  critics_score = ratings[i].get_text().strip('%')
-  user_score = ratings[i + 1].get_text().strip('%')
-  print(critics_score, user_score)
+open("selected_movies.html", "w").close()
+selected_movies = open("selected_movies.html", "a")
+selected_movies.write("""
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Selected movies</title>
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+  <div class="mb-movies">
+""")
+
+count = 0
+for movie in movies:
+    ratings = movie.find_all("span", class_="tMeterScore")
+    if len(ratings) > 1:
+        critics_score = float(ratings[0].get_text().strip('%'))
+        user_score = float(ratings[1].get_text().strip('%'))
+
+        # Condition for including a movie
+        if user_score - critics_score > 20:
+            print(count, ": ", critics_score, user_score)
+            count += 1
+            selected_movies.write(str(movie) + "\n\n")
+
+selected_movies.write("""
+  </div>
+</body>
+</html>
+""")
+
+selected_movies.close()
