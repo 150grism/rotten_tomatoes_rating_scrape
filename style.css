@@ -17,7 +17,7 @@
   justify-content: center;
 }
 
-.mb-movie a {
+.mb-movie > .movie_info > a {
   text-align: center;
   text-decoration: none;
   color: black;
@@ -33,12 +33,18 @@
   margin: 5px 0;
 }
 
+.tMeterScore {
+  vertical-align: middle;
+  width: 30px;
+}
+
 .icon {
   height: 16px;
   margin-bottom: 3px;
   width: 16px;
   height: 16px;
   display: inline-block;
+  vertical-align: text-bottom;
   /* deprecated. use 'upright' */
 }
 

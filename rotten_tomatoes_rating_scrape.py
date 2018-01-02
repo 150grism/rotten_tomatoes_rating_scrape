@@ -10,6 +10,11 @@ my_url = "https://www.rottentomatoes.com/browse/dvd-streaming-all/"
 driver.get(my_url)
 more_button = driver.find_element_by_class_name('mb-load-btn')
 
+for _ in range(80):
+    more_button.click()
+    time.sleep(0.5)
+time.sleep(5)
+
 page_html = driver.page_source
 soup = BeautifulSoup(page_html, "html.parser")
 movies = soup.find("div", class_="mb-movies")
@@ -29,7 +34,7 @@ selected_movies.write("""
   <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-  <div class="mb-movies">
+  <div class="mb-movies"\n\n>
 """)
 
 count = 0
@@ -41,6 +46,8 @@ for movie in movies:
 
         # Condition for including a movie
         if user_score - critics_score > 20:
+            for a in movie.find_all("a"):
+                a['href'] = """https://www.rottentomatoes.com""" + a['href']
             print(count, ": ", critics_score, user_score)
             count += 1
             selected_movies.write(str(movie) + "\n\n")
