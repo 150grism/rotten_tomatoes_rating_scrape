@@ -10,10 +10,10 @@ my_url = "https://www.rottentomatoes.com/browse/dvd-streaming-all/"
 driver.get(my_url)
 more_button = driver.find_element_by_class_name('mb-load-btn')
 
-for _ in range(80):
-    more_button.click()
-    time.sleep(0.5)
-time.sleep(5)
+# for _ in range(80):
+#     more_button.click()
+#     time.sleep(0.5)
+# time.sleep(5)
 
 page_html = driver.page_source
 soup = BeautifulSoup(page_html, "html.parser")
@@ -50,6 +50,7 @@ for movie in movies:
                 a['href'] = """https://www.rottentomatoes.com""" + a['href']
             print(count, ": ", critics_score, user_score)
             count += 1
+            # print(str(movie).replace("\uFFFD", " ") + "\n\n")
             selected_movies.write(str(movie) + "\n\n")
 
 selected_movies.write("""
@@ -59,3 +60,9 @@ selected_movies.write("""
 """)
 
 selected_movies.close()
+
+# with open('selected_movies.html', "r") as f:
+#     file_data = f.read()
+#     print(file_data)
+# raw = open('selected_movies.html', "w")
+# raw.write(file_data.replace('пїЅ','&nbsp;'))

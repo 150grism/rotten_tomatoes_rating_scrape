@@ -1,14 +1,20 @@
 .mb-movies {
   display: flex;
-  width: 740px;
+  width: 840px;
   flex-wrap: wrap;
   font-family: 'Source Sans Pro', sans-serif;
   margin: 20px auto;
 }
 
 .mb-movie {
-  margin: 0 20px;
-  max-width: 172px;
+  box-sizing: border-box;
+  margin: 10px 0;
+  width: 172px;
+  & * {
+    font-weight: normal;
+    font-size: 13px;
+    margin: 0;
+  }
   & > .poster_container > a {
     display: flex;
     flex-direction: row;
@@ -18,25 +24,24 @@
     text-align: center;
     text-decoration: none;
     color: black;
+    & > div {
+      margin: 5px 0;
+    }
   }
   & .release-date {
     color: #787878;
-  }
-  & * {
-    font-weight: normal;
-    font-size: 13px;
-    margin: 5px 0;
   }
 }
 
 .tMeterScore {
   vertical-align: middle;
-  width: 30px;
+  width: 22px;
+  display: inline-block;
 }
 
 .icon {
   height:16px;
-  margin-bottom:3px;
+  margin-bottom: 1.5px;
   width:16px;
   height: 16px;
   display: inline-block;
